@@ -57,3 +57,26 @@ def test_day_of_month_from_other_date_is_structurally_allowed():
     narrative = "Conditions shift by the 30th."
     result = narrative_guard.check_narrative(narrative, FACTS)
     assert result.ok, result.reason
+
+
+def test_narrative_with_embedded_iso_date_is_not_misread_as_negative_numbers():
+    # Regression: a raw ISO date embedded in prose (e.g. an LLM writing "2026-08-28" instead of
+    # "August 28th") used to have its two hyphens misread by the number regex as minus signs,
+    # producing spurious -8 and -28 tokens that are essentially never in `facts` -- a near-
+    # constant false failure whenever the narrative includes a literal ISO date. All three
+    # components (year, month, day-of-month) are legitimate structural facts.
+    narrative = "The outlook for 2026-08-28 shows the warmest conditions of the period."
+    result = narrative_guard.check_narrative(narrative, FACTS)
+    assert result.ok, result.reason
+    assert -8 not in result.checked_numbers
+    assert -28 not in result.checked_numbers
+
+
+def test_genuine_negative_number_is_still_correctly_parsed():
+    # The ISO-date fix must not break real negative values (e.g. a below-freezing temperature) --
+    # a standalone "-" preceded by whitespace/punctuation, never another digit, is still a real
+    # minus sign.
+    narrative = "Overnight lows dip to a chilly -3.0°C, well below the recent average."
+    result = narrative_guard.check_narrative(narrative, FACTS)
+    assert not result.ok
+    assert -3.0 in result.violations
