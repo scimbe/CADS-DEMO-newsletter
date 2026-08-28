@@ -1,0 +1,133 @@
+{
+  "facts": {
+    "days": [
+      {
+        "date": "2026-08-28",
+        "precip_mm": 10.9,
+        "tmax": 23.7,
+        "tmin": 17.3,
+        "wind_max_kmh": 19.8
+      },
+      {
+        "date": "2026-08-29",
+        "precip_mm": 1.5,
+        "tmax": 21.1,
+        "tmin": 15.5,
+        "wind_max_kmh": 19.9
+      },
+      {
+        "date": "2026-08-30",
+        "precip_mm": 5.6,
+        "tmax": 21.2,
+        "tmin": 17.1,
+        "wind_max_kmh": 23.1
+      },
+      {
+        "date": "2026-08-31",
+        "precip_mm": 8.7,
+        "tmax": 20.7,
+        "tmin": 15.6,
+        "wind_max_kmh": 16.1
+      },
+      {
+        "date": "2026-09-01",
+        "precip_mm": 3.6,
+        "tmax": 20.3,
+        "tmin": 15.3,
+        "wind_max_kmh": 13.5
+      },
+      {
+        "date": "2026-09-02",
+        "precip_mm": 0.3,
+        "tmax": 20.9,
+        "tmin": 13.1,
+        "wind_max_kmh": 12.1
+      },
+      {
+        "date": "2026-09-03",
+        "precip_mm": 0.3,
+        "tmax": 19.2,
+        "tmin": 14.8,
+        "wind_max_kmh": 21.4
+      }
+    ],
+    "generated_at": "2026-08-28T20:34:28+0200",
+    "highlights": [
+      {
+        "date": "2026-08-28",
+        "id": "hottest_day",
+        "label": "Warmest day",
+        "unit": "\u00b0C",
+        "value": 23.7
+      },
+      {
+        "date": "2026-09-02",
+        "id": "coldest_day",
+        "label": "Coldest night",
+        "unit": "\u00b0C",
+        "value": 13.1
+      },
+      {
+        "date": "2026-08-28",
+        "id": "wettest_day",
+        "label": "Wettest day",
+        "unit": "mm",
+        "value": 10.9
+      },
+      {
+        "date": "2026-08-30",
+        "id": "windiest_day",
+        "label": "Windiest day",
+        "unit": "km/h",
+        "value": 23.1
+      },
+      {
+        "id": "week_avg_tmax",
+        "label": "Average daily high",
+        "unit": "\u00b0C",
+        "value": 21.0
+      },
+      {
+        "id": "week_avg_tmin",
+        "label": "Average overnight low",
+        "unit": "\u00b0C",
+        "value": 15.5
+      },
+      {
+        "id": "total_precip",
+        "label": "Total precipitation this week",
+        "unit": "mm",
+        "value": 30.9
+      },
+      {
+        "id": "dry_days",
+        "label": "Dry days (< 1mm)",
+        "unit": "days",
+        "value": 2.0
+      }
+    ],
+    "location": "Hamburg, DE (53.56N, 10.00E)",
+    "source_url": "https://api.open-meteo.com/v1/forecast?latitude=53.5511&longitude=9.9937&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&timezone=Europe%2FBerlin&forecast_days=7"
+  },
+  "fetched_at": "2026-08-28T20:34:28+0200",
+  "generated_at": "2026-08-28T20:34:28+0200",
+  "guard_reason": "all numeric tokens in narrative are grounded in facts",
+  "llm_attempts": 1,
+  "llm_fallback_used": false,
+  "llm_request_ids": [
+    "chatcmpl-9f431fe9-ef98-4fa0-88c1-05c09c020a3c"
+  ],
+  "llm_used": true,
+  "model_name": "local-devstral-small2",
+  "narrative": "This week, the warmest day will reach 23.7\u00b0C on August 28, while the wettest day brings 10.9 mm of rain. Wind speeds peak at 23.1 km/h on August 30, and there are 2 dry days with less than 1 mm of precipitation.",
+  "pdf_written": true,
+  "raw_response_sha256": "1e916c385c4c1853e95b9cea155356b48a2d1a4d3ed898d78652f62f825f6cca",
+  "run_id": "20260828-203428",
+  "selected_highlight_ids": [
+    "hottest_day",
+    "wettest_day",
+    "windiest_day",
+    "dry_days"
+  ],
+  "source_url": "https://api.open-meteo.com/v1/forecast?latitude=53.5511&longitude=9.9937&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&timezone=Europe%2FBerlin&forecast_days=7"
+}
