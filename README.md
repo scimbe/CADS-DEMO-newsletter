@@ -13,6 +13,28 @@ tool, not a hosted `*.bunsenbrenner.org` service — it produces artifacts you
 commit, run locally, or wire into a scheduled job. No tunnel/ops work is in
 scope here.
 
+## Marketplace status
+
+This demo is published to the live **bunsenbrenner.org** registry
+(`registry.bunsenbrenner.org`) as a signed manifest. Verified present on 2026-08-29:
+
+- name `newsletter`, latest version `0.1.2`, `installer_kind: binary`
+- publisher pubkey `1292c0cc…ce69b` (shared across the whole demo portfolio)
+- manifest id `724a8919…7040`
+
+Reproduce the check yourself:
+
+```bash
+curl -s https://registry.bunsenbrenner.org/manifests | grep '"name":"newsletter"'
+```
+
+**Measured vs. claimed:** what is *measured* here is that the manifest — signed metadata
+plus a publisher-signed bundle reference — is listed on the registry. The registry's own
+guardrail verdict for a binary-kind manifest explicitly notes it is **not** a static bundle
+scan; trust rests on the publisher-pubkey allowlist checked at activation time. It is **not**
+a claim that an always-on hosted `*.bunsenbrenner.org` service exists — as stated above this
+is a local generator, not a hosted service; live tunnel/service deployment is out of scope.
+
 ## What's real here
 
 | Piece | Real implementation |
