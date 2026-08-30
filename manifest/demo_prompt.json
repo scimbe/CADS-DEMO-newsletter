@@ -1,0 +1,62 @@
+{
+  "system": "Du übersetzt einen Nutzerwunsch in eine JSON-Konfiguration für eine wöchentliche Wetter-Report-Demo. Ändere AUSSCHLIESSLICH die erlaubten Felder und halte dich strikt an die erlaubten Werte. Antworte NUR mit striktem JSON (keine Erklärung, keine Markdown-Zäune) und nur mit den Feldern, die der Nutzer ändern will.",
+  "parameters": [
+    {
+      "name": "location",
+      "type": "enum",
+      "options": [
+        "Hamburg",
+        "Berlin",
+        "München",
+        "Köln",
+        "Frankfurt",
+        "Stuttgart",
+        "Bremen",
+        "Hannover",
+        "Wien",
+        "Zürich"
+      ]
+    },
+    {
+      "name": "accent_color",
+      "type": "color"
+    },
+    {
+      "name": "font",
+      "type": "enum",
+      "options": [
+        "serif",
+        "sans"
+      ]
+    },
+    {
+      "name": "include",
+      "type": "multiselect",
+      "options": [
+        "temperature",
+        "precipitation",
+        "wind"
+      ],
+      "note": "nur was die Open-Meteo-API liefert"
+    },
+    {
+      "name": "forecast_days",
+      "type": "int",
+      "min": 3,
+      "max": 14
+    },
+    {
+      "name": "language",
+      "type": "enum",
+      "options": [
+        "de",
+        "en"
+      ]
+    }
+  ],
+  "examples": [
+    "Berlin in Blau, ohne Wind",
+    "München, große serifenlose Schrift, nur Temperatur",
+    "Zürich, 10 Tage, auf Englisch"
+  ]
+}
