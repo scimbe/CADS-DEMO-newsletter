@@ -70,7 +70,12 @@ def _parse_reply(content: str) -> tuple[list[str], str]:
         text = text.strip()
     data = json.loads(text)
     ids = list(data["selected_highlight_ids"])
-    narrative = str(data["narrative"])
+    narrative = data.get("narrative")
+    if not isinstance(narrative, str):
+        # The local model writes "narr"/"narrual" for this key under the German prompt.
+        narrative = next((v for k, v in data.items() if k != "selected_highlight_ids" and isinstance(v, str)), "")
+    if not narrative.strip():
+        raise KeyError("narrative")
     return ids, narrative
 
 
