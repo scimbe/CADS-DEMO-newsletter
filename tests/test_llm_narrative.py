@@ -174,3 +174,15 @@ def test_generate_narrative_live_real_litellm_call():
     if outcome.llm_fallback_used:
         pytest.fail(f"live LLM call fell back to deterministic template: {outcome.guard_reason}")
     assert outcome.used_llm is True
+
+
+@pytest.mark.parametrize("key", ["narrative", "narr", "narrual"])
+def test_parse_reply_takes_the_text_under_a_misspelled_key(key):
+    # The local model misspells this key under the German prompt; its text is still what was asked for.
+    ids, text = llm_narrative._parse_reply(json.dumps({"selected_highlight_ids": ["a"], key: "Text."}))
+    assert ids == ["a"] and text == "Text."
+
+
+def test_parse_reply_without_any_text_stays_a_failure():
+    with pytest.raises(KeyError):
+        llm_narrative._parse_reply('{"selected_highlight_ids": ["a"], "narrative": "  "}')

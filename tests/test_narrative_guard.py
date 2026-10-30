@@ -80,3 +80,10 @@ def test_genuine_negative_number_is_still_correctly_parsed():
     result = narrative_guard.check_narrative(narrative, FACTS)
     assert not result.ok
     assert -3.0 in result.violations
+
+
+def test_german_decimal_comma_is_one_number():
+    facts = {"days": [{"date": "2026-10-31", "tmax": 12.0, "tmin": 8.3, "precip_mm": 2.1, "wind_max_kmh": 11.8}], "highlights": []}
+    assert narrative_guard.check_narrative("Wind bis 11,8 km/h und 12,0 Grad.", facts).ok
+    # 31 and 10 are day and month of the date; as one number this one is invented.
+    assert not narrative_guard.check_narrative("Es werden 31,10 Grad.", facts).ok

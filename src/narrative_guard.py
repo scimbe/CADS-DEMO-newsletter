@@ -91,6 +91,7 @@ def check_narrative(narrative: str, facts: dict[str, Any]) -> GuardResult:
     checked: list[float] = []
     violations: list[float] = []
 
+    narrative = re.sub(r"(?<=\d),(?=\d)", ".", narrative)  # German decimal comma: "11,8" is one number
     for match in _NUMBER_RE.finditer(narrative):
         token = match.group(0)
         try:
